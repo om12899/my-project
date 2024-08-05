@@ -4,6 +4,7 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Home from "../Pages/Home";
 import Navbar from "../Components/Navbar";
+import NotFound from "../Pages/NotFound";
 import React from "react";
 
 function Layout() {
@@ -20,6 +21,7 @@ function Layout() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
