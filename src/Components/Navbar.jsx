@@ -110,7 +110,7 @@ function Navbar() {
       {isOpen && (
         <div className="md:hidden mb-6">
           <div
-            className={`px-2 mx-2 border-2  border-dark-blue bg-dark-gray/70 rounded-lg shadow-lg mt-4 pt-2 pb-3 space-y-1 sm:px-3`}
+            className={`px-2 mx-2 border-2  border-dark-blue bg-off-white/70 rounded-lg shadow-lg mt-4 pt-2 pb-3 space-y-1 sm:px-3`}
           >
             <Link
               to="/"

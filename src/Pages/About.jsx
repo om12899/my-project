@@ -33,7 +33,7 @@ function About() {
           />
         </div>
       </div>
-      <div className="border-b-2 pb-8 border-gray-400 text-left mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="border-b pb-8 border-gray-400 text-left mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <div className="flex flex-col mt-2">
           <p className="text-2xl text-dark-blue">Education</p>
           <p className="mt-2 font-bold text-light-gray text-md">

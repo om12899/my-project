@@ -11,7 +11,7 @@ function Layout() {
   return (
     <Router>
       <div className=" mx-18 flex flex-col ">
-        <div className=" fixed bg-dark-gray/50 top-0 left-0 w-full z-10">
+        <div className=" fixed bg-off-white/50 top-0 left-0 w-full z-10">
           <Navbar />
         </div>
         <div className="flex-grow mt-16 p-4">

@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-blue": "#addcca",
-        "light-blue": "#addcca",
-        "light-gray": "#f7f8f3",
+        "dark-blue": "#52ada2",
+        "light-blue": "#52ada2",
+        "light-gray": "#232323",
         "light-green": "#aade87",
         "dark-gray": "#232323",
+        "off-white": "#fffff2",
       },
     },
   },
