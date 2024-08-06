@@ -4,10 +4,14 @@ import {
   DialogBackdrop,
   DialogPanel,
   DialogTitle,
+  Input,
+  Textarea,
 } from "@headlessui/react";
 import React, { useCallback, useState } from "react";
 
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import api from "../api/axios";
+import { clsx } from "clsx";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +20,7 @@ function Admin() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [passwordCorrect, setPasswordCorrect] = useState(false);
+  const [data, setData] = useState([]);
   const [emailData, setEmailData] = useState({
     firstName: "",
     lastName: "",
@@ -36,7 +41,7 @@ function Admin() {
     {
       name: "Received On",
       selector: (row) =>
-        dayjs(row.submittedDate).format("YYYY-MM-DD hh:mm:ss a "),
+        dayjs(row.submittedDate).format("DD MMM YYYY, hh:mm:ss a "),
     },
     {
       name: "Action",
@@ -58,29 +63,15 @@ function Admin() {
       ),
     },
   ];
-
-  const data = [
-    {
-      _id: "66b1f8c344ce6697a1785649",
-      firstName: "John",
-      lastName: "Doe",
-      email: "john.doe@example.com",
-      subject: "Feedback",
-      submittedDate: "2024-08-06T14:50:54.624Z",
-      content: "This is a sample message.",
-      __v: 0,
-    },
-    {
-      _id: "66b1fa53d99b19422e222671",
-      firstName: "John1",
-      lastName: "Doe",
-      email: "john.doe@example.com",
-      subject: "Feedback",
-      submittedDate: "2024-08-06T14:50:54.624Z",
-      content: "This is a sample message.",
-      __v: 0,
-    },
-  ];
+  const fetchResponses = async () => {
+    try {
+      const response = await api.get("/responses");
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+      alert("Error fetching responses");
+    }
+  };
 
   createTheme(
     "solarized",
@@ -113,6 +104,7 @@ function Admin() {
   const validatePassword = useCallback(() => {
     if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
       setPasswordCorrect(true);
+      fetchResponses();
     } else {
       alert("Incorrect Password");
     }
@@ -180,26 +172,53 @@ function Admin() {
               <div className="bg-dark-gray px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mx-auto flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-dark-gray sm:mx-0 sm:h-10 sm:w-10">
-                    <ExclamationTriangleIcon className="w-6 h-6 text-light-blue" />
+                    <EnvelopeIcon className="w-6 h-6 text-light-gray" />
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <DialogTitle
                       as="h3"
-                      className="text-light-blue font-semibold leading-6"
+                      className="text-light-gray font-semibold leading-6"
                     >
-                      Hi Om, we have received a response
+                      Hi Om, we have received a response from{" "}
+                      {emailData.firstName} {emailData.lastName}
+                      <div className="flex mb-2 mt-4 items-center">
+                        <p className="w-1/5 font-semibold">Email ID:</p>
+                        <Input
+                          disabled
+                          className={clsx(
+                            " block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                          )}
+                          value={emailData.email}
+                          type="text"
+                        />
+                      </div>
+                      <div className="flex mb-2 items-center">
+                        <p className="w-1/5  font-semibold">Subject:</p>
+                        <Input
+                          disabled
+                          className={clsx(
+                            " block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                          )}
+                          value={emailData.subject}
+                          type="text"
+                        />
+                      </div>
+                      <div className="flex mb-2 items-center">
+                        <Textarea
+                          disabled
+                          className={clsx(
+                            "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                            "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                          )}
+                          value={emailData.content}
+                          type="text"
+                          rows={5}
+                        />
+                      </div>
                     </DialogTitle>
-                    <div className="mt-2">
-                      <p className="text-sm text-light-gray">
-                        From: {emailData.firstName} {emailData.lastName}
-                      </p>
-                      <p className="text-sm text-light-gray">
-                        Subject: {emailData.subject}
-                      </p>
-                      <p className="text-sm mt-4 text-light-gray">
-                        {emailData.content}
-                      </p>
-                    </div>
+                    <div className="mt-2 text-sm text-light-gray"></div>
                   </div>
                 </div>
               </div>
@@ -208,13 +227,13 @@ function Admin() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full justify-center rounded-md bg-light-blue px-3 py-2 text-sm font-semibold text-dark-gray shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  className="inline-flex w-full justify-center rounded-md bg-light-blue px-3 py-2 text-sm font-semibold text-dark-gray shadow-sm hover:text-light-gray hover:border hover:border-light-blue hover:bg-dark-gray sm:ml-3 sm:w-auto"
                 >
                   Close
                 </button>
                 <a
                   href={`mailto:${emailData.email}`}
-                  className="inline-flex w-full justify-center rounded-md bg-light-blue px-3 py-2 text-sm font-semibold text-dark-gray shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto text-center"
+                  className="inline-flex w-full justify-center rounded-md bg-light-blue px-3 py-2 text-sm font-semibold text-dark-gray shadow-sm hover:text-light-gray hover:border hover:border-light-blue hover:bg-dark-gray sm:ml-3 sm:w-auto"
                 >
                   Reply
                 </a>

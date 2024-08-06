@@ -1,6 +1,9 @@
+import { Description, Field, Input, Label, Textarea } from "@headlessui/react";
+
 import React from "react";
 import api from "../api/axios";
 import card from "../assets/card.png";
+import clsx from "clsx";
 import { useState } from "react";
 
 function Contact() {
@@ -56,14 +59,20 @@ function Contact() {
                   >
                     First Name (required)
                   </label>
-                  <input
+
+                  <Input
                     value={formData.firstName}
                     onChange={(e) =>
-                      setFormData({ ...formData, firstName: e.target.value })
+                      setFormData({
+                        ...formData,
+                        firstName: e.target.value,
+                      })
                     }
-                    className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                     name="firstName"
-                    type="text"
+                    className={clsx(
+                      "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                      "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                    )}
                   />
                 </div>
                 <div className="w-full md:w-1/2">
@@ -73,14 +82,17 @@ function Contact() {
                   >
                     Last Name (required)
                   </label>
-                  <input
+
+                  <Input
+                    name="lastName"
                     value={formData.lastName}
                     onChange={(e) =>
                       setFormData({ ...formData, lastName: e.target.value })
                     }
-                    className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
-                    name="lastName"
-                    type="text"
+                    className={clsx(
+                      "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                      "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                    )}
                   />
                 </div>
               </div>
@@ -91,12 +103,15 @@ function Contact() {
                 >
                   Email (required)
                 </label>
-                <input
+                <Input
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
+                  className={clsx(
+                    "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                    "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                  )}
                   name="email"
                   type="text"
                 />
@@ -108,12 +123,15 @@ function Contact() {
                 >
                   Subject (required)
                 </label>
-                <input
+                <Input
                   value={formData.subject}
                   onChange={(e) =>
                     setFormData({ ...formData, subject: e.target.value })
                   }
-                  className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
+                  className={clsx(
+                    "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                    "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                  )}
                   name="subject"
                   type="text"
                 />
@@ -124,12 +142,15 @@ function Contact() {
                   >
                     Content (required)
                   </label>
-                  <textarea
+                  <Textarea
                     value={formData.content}
                     onChange={(e) =>
                       setFormData({ ...formData, content: e.target.value })
                     }
-                    className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
+                    className={clsx(
+                      "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                      "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-light-blue"
+                    )}
                     name="content"
                     type="text"
                     rows={5}

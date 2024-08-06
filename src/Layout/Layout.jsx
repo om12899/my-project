@@ -8,6 +8,7 @@ import Home from "../Pages/Home";
 import Navbar from "../Components/Navbar";
 import NotFound from "../Pages/NotFound";
 import React from "react";
+import Tattoo from "../Pages/Tattoo";
 
 function Layout() {
   return (
@@ -25,7 +26,7 @@ function Layout() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/archive" element={<Archive />} />
             <Route path="/admin" element={<Admin />} />
-
+            <Route path="/tattoo" element={<Tattoo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
