@@ -1,7 +1,29 @@
 import React from "react";
+import api from "../api/axios";
 import card from "../assets/card.png";
+import { useState } from "react";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    content: "",
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await api.post("/submit", formData);
+      console.log(response.data);
+      alert("Data submitted successfully");
+    } catch (error) {
+      console.error(error);
+      alert("Error submitting data");
+    }
+  };
   return (
     <div className="p-4">
       <p className="text-dark-blue text-center md:text-left font-semibold text-3xl md:text-8xl">
@@ -24,7 +46,7 @@ function Contact() {
           <p className="text-center md:text-left text-lg text-light-gray p-4">
             Please fill out the form below
           </p>
-          <form action="">
+          <form>
             <div className="px-4">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="w-full md:w-1/2">
@@ -35,6 +57,10 @@ function Contact() {
                     First Name (required)
                   </label>
                   <input
+                    value={formData.firstName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, firstName: e.target.value })
+                    }
                     className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                     name="firstName"
                     type="text"
@@ -48,6 +74,10 @@ function Contact() {
                     Last Name (required)
                   </label>
                   <input
+                    value={formData.lastName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, lastName: e.target.value })
+                    }
                     className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                     name="lastName"
                     type="text"
@@ -62,6 +92,10 @@ function Contact() {
                   Email (required)
                 </label>
                 <input
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                   name="email"
                   type="text"
@@ -75,6 +109,10 @@ function Contact() {
                   Subject (required)
                 </label>
                 <input
+                  value={formData.subject}
+                  onChange={(e) =>
+                    setFormData({ ...formData, subject: e.target.value })
+                  }
                   className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                   name="subject"
                   type="text"
@@ -87,6 +125,10 @@ function Contact() {
                     Content (required)
                   </label>
                   <textarea
+                    value={formData.content}
+                    onChange={(e) =>
+                      setFormData({ ...formData, content: e.target.value })
+                    }
                     className="bg-transparent border text-light-gray border-light-blue rounded-md w-full p-2 mt-2"
                     name="content"
                     type="text"
@@ -94,7 +136,10 @@ function Contact() {
                   />
                 </div>
                 <div className="mt-2 text-left">
-                  <button className="bg-dark-gray text-light-blue border-2 border-light-blue rounded-md w-full md:w-1/3 p-2 mt-2">
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-dark-gray text-light-blue border-2 border-light-blue rounded-md w-full md:w-1/3 p-2 mt-2"
+                  >
                     Submit
                   </button>
                 </div>

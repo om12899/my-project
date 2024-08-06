@@ -5,12 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faContactCard } from "@fortawesome/free-regular-svg-icons";
 import logo from "../assets/card.png"; // Adjust the path to your logo
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const navigateToAdmin = () => {
+    navigate("/admin");
   };
   const [activeTab, setActiveTab] = useState(5);
 
@@ -18,7 +23,7 @@ function Navbar() {
     <nav className="pt-2 bg-inherit">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div onClick={navigateToAdmin} className="flex items-center">
             <img src={logo} className="h-20" alt="Logo" />
           </div>
           <div className="hidden md:flex md:ml-auto md:space-x-4">
