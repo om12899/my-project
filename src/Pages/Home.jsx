@@ -32,6 +32,14 @@ function Home() {
         style={{ fontSize: "1.5em", display: "inline-block" }}
         speed={25}
       />
+      <p className="text-light-gray font-extralight fixed bottom-5 flex text-xs items-center">
+        <img
+          width="12"
+          alt="Copyright"
+          src="https://img.icons8.com/?size=100&id=88661&format=png&color=f7f8f3"
+        />
+        All Rights Reserved to Om Thakkar
+      </p>
     </div>
   );
 }
