@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import About from "../Pages/About";
+import Archive from "../Pages/Archive";
 import Contact from "../Pages/Contact";
 import Home from "../Pages/Home";
 import Navbar from "../Components/Navbar";
@@ -21,6 +22,7 @@ function Layout() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/archive" element={<Archive />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

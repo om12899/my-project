@@ -12,7 +12,7 @@ function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(5);
 
   return (
     <nav className="pt-2 bg-inherit">
@@ -24,7 +24,6 @@ function Navbar() {
           <div className="hidden md:flex md:ml-auto md:space-x-4">
             <Link
               to="/"
-              onClick={() => setActiveTab(1)}
               className={`text-${
                 activeTab === 1 ? "dark-blue" : "light-gray"
               } hover:text-dark-blue px-3 py-2 rounded-md text-sm font-medium`}
@@ -34,7 +33,6 @@ function Navbar() {
             </Link>
             <Link
               to="/about"
-              onClick={() => setActiveTab(2)}
               className={`text-${
                 activeTab === 2 ? "dark-blue" : "light-gray"
               } hover:text-dark-blue px-3 py-2 rounded-md text-sm font-medium`}
@@ -44,7 +42,6 @@ function Navbar() {
             </Link>
             <Link
               to="/contact"
-              onClick={() => setActiveTab(3)}
               className={`text-${
                 activeTab === 3 ? "dark-blue" : "light-gray"
               } hover:text-dark-blue px-3 py-2 rounded-md text-sm font-medium`}
@@ -54,7 +51,6 @@ function Navbar() {
             </Link>
             <Link
               to="/archive"
-              onClick={() => setActiveTab(4)}
               className={`text-${
                 activeTab === 4 ? "dark-blue" : "light-gray"
               } hover:text-dark-blue px-3 py-2 rounded-md text-sm font-medium`}

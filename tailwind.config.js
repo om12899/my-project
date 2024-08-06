@@ -9,6 +9,7 @@ export default {
         "light-gray": "#f7f8f3",
         "light-green": "#aade87",
         "dark-gray": "#232323",
+        "dark-green": "#52ada2",
       },
     },
   },
