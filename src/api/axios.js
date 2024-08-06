@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://portfolio-backend-zeta-two.vercel.app/",
+  baseURL: "https://portfolio-backend-zeta-two.vercel.app/",
 });
 
 export default api;
