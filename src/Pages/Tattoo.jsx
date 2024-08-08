@@ -67,7 +67,7 @@ function Tattoo() {
       </p>
       <div className="flex justify-center mb-4">
         <img
-          src="https://drive.google.com/thumbnail?id=1NZ-gXTj7Ik3Hw-QL5_GhMdCUswEwU6oF"
+          src="https://portfolio-images-2.s3.ap-south-1.amazonaws.com/TattoARM.png"
           alt="Tattoo Design"
           className="w-full max-w-md"
         />
