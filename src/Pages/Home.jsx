@@ -54,6 +54,21 @@ function Home() {
           <div>
             <div className="p-4 mt-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {/* CMS */}
+                <div
+                  className="relative w-full pb-[100%] bg-left bg-cover group"
+                  style={{
+                    backgroundImage: `url("https://portfolio-images-2.s3.ap-south-1.amazonaws.com/CMS1.png")`,
+                  }}
+                >
+                  <Link to="/cms">
+                    <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <p className="text-dark-gray font-semibold text-lg">
+                        Content Management System
+                      </p>
+                    </div>
+                  </Link>
+                </div>
                 {/* Tattoo */}
                 <div
                   className="relative w-full pb-[100%] bg-center bg-cover group"
@@ -65,22 +80,6 @@ function Home() {
                     <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
                       <p className="text-dark-gray font-semibold text-lg">
                         Tattoo Design
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-
-                {/* Coming Soon */}
-                <div
-                  className="relative w-full pb-[100%] bg-center bg-cover group"
-                  style={{
-                    backgroundImage: `url(${storyWritingsImage})`,
-                  }}
-                >
-                  <Link to="/">
-                    <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                      <p className="text-dark-gray font-semibold text-lg">
-                        Coming Soon..
                       </p>
                     </div>
                   </Link>
@@ -104,7 +103,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <p className="text-light-gray font-extralight fixed bottom-5 flex text-xs items-center">
+          <p className="text-light-gray font-extralight mt-2 flex text-xs items-center">
             <img
               width="12"
               alt="Copyright"
