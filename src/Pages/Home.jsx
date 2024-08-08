@@ -73,13 +73,13 @@ function Home() {
               <div
                 className="relative w-full pb-[100%] bg-center bg-cover group"
                 style={{
-                  backgroundImage: `url(${biker})`,
+                  backgroundImage: `url("https://portfolio-images-2.s3.ap-south-1.amazonaws.com/airbnb-1.png")`,
                 }}
               >
-                <Link to="/">
+                <Link to="/airbnb">
                   <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
                     <p className="text-dark-gray font-semibold text-lg">
-                      Coming Soon
+                      A clone of AirBnb
                     </p>
                   </div>
                 </Link>

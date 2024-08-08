@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import About from "../Pages/About";
 import Admin from "../Pages/Admin";
+import AirBNB from "../Pages/AirBNB";
 import Archive from "../Pages/Archive";
 import CMS from "../Pages/CMS";
 import Contact from "../Pages/Contact";
@@ -29,6 +30,7 @@ function Layout() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/tattoo" element={<Tattoo />} />
             <Route path="/cms" element={<CMS />} />
+            <Route path="/airbnb" element={<AirBNB />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
