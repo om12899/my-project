@@ -10,6 +10,7 @@ import Home from "../Pages/Home";
 import Navbar from "../Components/Navbar";
 import NotFound from "../Pages/NotFound";
 import React from "react";
+import StitchCraftBlog from "../Pages/StitckCraft";
 import Tattoo from "../Pages/Tattoo";
 
 function Layout() {
@@ -31,6 +32,7 @@ function Layout() {
             <Route path="/tattoo" element={<Tattoo />} />
             <Route path="/cms" element={<CMS />} />
             <Route path="/airbnb" element={<AirBNB />} />
+            <Route path="/stitchcraft" element={<StitchCraftBlog />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
