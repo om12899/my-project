@@ -8,9 +8,11 @@ import {
   Textarea,
 } from "@headlessui/react";
 import React, { useCallback, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import api from "../api/axios";
+import axios from "axios";
 import { clsx } from "clsx";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +23,7 @@ function Admin() {
   const [open, setOpen] = useState(false);
   const [passwordCorrect, setPasswordCorrect] = useState(false);
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
   const [emailData, setEmailData] = useState({
     firstName: "",
     lastName: "",
@@ -28,6 +31,40 @@ function Admin() {
     subject: "",
     content: "",
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "https://portfolio-backend-zeta-two.vercel.app/check-password",
+        {
+          password: password,
+        }
+      );
+
+      // Handle success
+      toast.success(response.data.message);
+      setPasswordCorrect(true);
+      // Extract the token from the response
+      const token = response.data.token;
+
+      // Store the token in localStorage or sessionStorage
+      localStorage.setItem("authToken", token);
+
+      // Redirect or update UI accordingly
+      // For example: window.location.href = '/protected-page';
+    } catch (error) {
+      // Handle error
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        setError(error.response.data.message);
+      } else {
+        // Something else happened while setting up the request
+        setError(error.message);
+      }
+    }
+  };
 
   const columns = [
     {
@@ -101,15 +138,6 @@ function Admin() {
     "dark"
   );
 
-  const validatePassword = useCallback(() => {
-    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
-      setPasswordCorrect(true);
-      fetchResponses();
-    } else {
-      alert("Incorrect Password");
-    }
-  }, [password]);
-
   return (
     <div>
       {passwordCorrect ? (
@@ -135,7 +163,7 @@ function Admin() {
             type="password"
           />
           <button
-            onClick={validatePassword}
+            onClick={handleSubmit}
             className="bg-dark-gray mx-4 text-light-blue border border-light-blue rounded-md  p-2 mt-2"
           >
             Submit
@@ -242,6 +270,18 @@ function Admin() {
           </div>
         </div>
       </Dialog>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

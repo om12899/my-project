@@ -84,16 +84,6 @@ function StitchCraftBlog() {
       </ul>
 
       <h2 className="text-3xl font-semibold text-light-blue mt-6 mb-4">
-        Tech Stack
-      </h2>
-      <p className="text-lg mb-4">
-        StitchCraft is built using the MERN stack (MongoDB, Express.js, React,
-        Node.js), providing a robust and scalable foundation for the platform.
-        The use of Tailwind CSS ensures a clean and responsive design,
-        delivering a consistent user experience across all devices.
-      </p>
-
-      <h2 className="text-3xl font-semibold text-light-blue mt-6 mb-4">
         Conclusion
       </h2>
       <p className="text-lg mb-4">

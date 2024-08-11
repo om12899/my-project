@@ -117,7 +117,7 @@ function About() {
           </p>
           <p className="text-gray-400">Azure Fundamentals AZ-900</p>
 
-          <p className="mt-2 font-bold text-light-gray text-md">Canva</p>
+          <p className="mt-2 font-bold text-light-gray text-md"></p>
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-6 md:gap-24 mt-8 text-left">
