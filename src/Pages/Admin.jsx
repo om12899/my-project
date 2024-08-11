@@ -46,6 +46,8 @@ function Admin() {
       // Handle success
       toast.success(response.data.message);
       setPasswordCorrect(true);
+      fetchResponses();
+      as;
       // Extract the token from the response
       const token = response.data.token;
 
