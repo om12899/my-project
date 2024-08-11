@@ -58,9 +58,11 @@ function Admin() {
       // Handle error
       if (error.response) {
         // Server responded with a status other than 200 range
+        toast.error(error.response.data.message);
         setError(error.response.data.message);
       } else {
         // Something else happened while setting up the request
+        toast.error(error.message);
         setError(error.message);
       }
     }
