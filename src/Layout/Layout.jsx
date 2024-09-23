@@ -9,9 +9,9 @@ import Contact from "../Pages/Contact";
 import Home from "../Pages/Home";
 import Navbar from "../Components/Navbar";
 import NotFound from "../Pages/NotFound";
-import React from "react";
 import StitchCraftBlog from "../Pages/StitckCraft";
 import Tattoo from "../Pages/Tattoo";
+import Turia from "../Pages/Turia";
 
 function Layout() {
   return (
@@ -33,6 +33,7 @@ function Layout() {
             <Route path="/cms" element={<CMS />} />
             <Route path="/airbnb" element={<AirBNB />} />
             <Route path="/stitchcraft" element={<StitchCraftBlog />} />
+            <Route path="/turia" element={<Turia />}></Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

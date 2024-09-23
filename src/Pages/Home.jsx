@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import biker from "../assets/bike.png";
 
 function Home() {
   return (
@@ -49,6 +47,21 @@ function Home() {
                   <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
                     <p className="text-dark-gray font-semibold text-xl">
                       Content Management System
+                    </p>
+                  </div>
+                </Link>
+              </div>
+              {/* Turia */}
+              <div
+                className="relative w-full pb-[100%] bg-center bg-cover group"
+                style={{
+                  backgroundImage: `url("https://portfolio-images-2.s3.ap-south-1.amazonaws.com/turia1.jpeg")`,
+                }}
+              >
+                <Link to="/turia">
+                  <div className="absolute inset-0 bg-light-blue bg-opacity-90 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                    <p className="text-dark-gray font-semibold text-xl">
+                      Turia - Website
                     </p>
                   </div>
                 </Link>
